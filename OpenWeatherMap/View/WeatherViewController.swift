@@ -8,11 +8,19 @@
 import UIKit
 
 class WeatherViewController: UIViewController {
+    
+    var lat: Double = 0
+    var lon: Double = 0
+    
+    let viewModel = WeatherViewModel()
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        
+
+        viewModel.getWeather(lat: lat, lon: lon, callback: { weatherCity in
+            print(weatherCity.name)
+        })
         
     }
 

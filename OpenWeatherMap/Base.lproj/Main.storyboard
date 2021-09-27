@@ -11,7 +11,7 @@
         <!--Weather View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="WeatherViewController" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="WeatherViewController" customModule="OpenWeatherMap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -50,7 +50,7 @@
                         <barButtonItem key="rightBarButtonItem" title="Item" image="location" catalog="system" id="xFi-hj-TOs"/>
                     </navigationItem>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="showDetail" id="umY-GQ-lL2"/>
+                        <segue destination="BYZ-38-t0r" kind="showDetail" identifier="weatherSegue" id="umY-GQ-lL2"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VSa-t5-cSZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
