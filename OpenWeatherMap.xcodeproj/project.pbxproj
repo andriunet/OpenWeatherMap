@@ -22,6 +22,9 @@
 		66ECDC6A27023707002C0896 /* WeatherCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66ECDC6927023707002C0896 /* WeatherCity.swift */; };
 		66ECDC6C27024804002C0896 /* cities.json in Resources */ = {isa = PBXBuildFile; fileRef = 66ECDC6B27024804002C0896 /* cities.json */; };
 		66ECDC6F27027AA3002C0896 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66ECDC6E27027AA3002C0896 /* Constant.swift */; };
+		66FA56BB2703990F003DC1E2 /* HourlyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FA56BA2703990F003DC1E2 /* HourlyCollectionViewCell.swift */; };
+		66FA56BD2703B5BD003DC1E2 /* Forecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FA56BC2703B5BD003DC1E2 /* Forecast.swift */; };
+		66FA56BF2703C0C7003DC1E2 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FA56BE2703C0C7003DC1E2 /* Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +66,9 @@
 		66ECDC6927023707002C0896 /* WeatherCity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCity.swift; sourceTree = "<group>"; };
 		66ECDC6B27024804002C0896 /* cities.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cities.json; sourceTree = "<group>"; };
 		66ECDC6E27027AA3002C0896 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		66FA56BA2703990F003DC1E2 /* HourlyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyCollectionViewCell.swift; sourceTree = "<group>"; };
+		66FA56BC2703B5BD003DC1E2 /* Forecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Forecast.swift; sourceTree = "<group>"; };
+		66FA56BE2703C0C7003DC1E2 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,8 +155,8 @@
 		66ECDC5E2702314A002C0896 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				66ECDC6327023527002C0896 /* CitiesViewController.swift */,
-				66ECDC2F27022677002C0896 /* WeatherViewController.swift */,
+				66FA56B927039900003DC1E2 /* Cities */,
+				66FA56B8270398F5003DC1E2 /* Weather */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -160,6 +166,7 @@
 			children = (
 				66ECDC67270236F9002C0896 /* Cities.swift */,
 				66ECDC6927023707002C0896 /* WeatherCity.swift */,
+				66FA56BC2703B5BD003DC1E2 /* Forecast.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -177,8 +184,26 @@
 			isa = PBXGroup;
 			children = (
 				66ECDC6E27027AA3002C0896 /* Constant.swift */,
+				66FA56BE2703C0C7003DC1E2 /* Extension.swift */,
 			);
 			path = Utility;
+			sourceTree = "<group>";
+		};
+		66FA56B8270398F5003DC1E2 /* Weather */ = {
+			isa = PBXGroup;
+			children = (
+				66ECDC2F27022677002C0896 /* WeatherViewController.swift */,
+				66FA56BA2703990F003DC1E2 /* HourlyCollectionViewCell.swift */,
+			);
+			path = Weather;
+			sourceTree = "<group>";
+		};
+		66FA56B927039900003DC1E2 /* Cities */ = {
+			isa = PBXGroup;
+			children = (
+				66ECDC6327023527002C0896 /* CitiesViewController.swift */,
+			);
+			path = Cities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -317,9 +342,12 @@
 				66ECDC6F27027AA3002C0896 /* Constant.swift in Sources */,
 				66ECDC66270236E2002C0896 /* CitiesViewModel.swift in Sources */,
 				66ECDC6427023527002C0896 /* CitiesViewController.swift in Sources */,
+				66FA56BB2703990F003DC1E2 /* HourlyCollectionViewCell.swift in Sources */,
+				66FA56BF2703C0C7003DC1E2 /* Extension.swift in Sources */,
 				66ECDC62270232EF002C0896 /* WeatherViewModel.swift in Sources */,
 				66ECDC68270236F9002C0896 /* Cities.swift in Sources */,
 				66ECDC2C27022677002C0896 /* AppDelegate.swift in Sources */,
+				66FA56BD2703B5BD003DC1E2 /* Forecast.swift in Sources */,
 				66ECDC2E27022677002C0896 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

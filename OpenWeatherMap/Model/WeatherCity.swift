@@ -7,7 +7,6 @@
 
 import UIKit
 
-// MARK: - WeatherCity
 struct WeatherCity : Codable {
     let coord: Coord
     let weather: [Weather]
@@ -23,35 +22,21 @@ struct WeatherCity : Codable {
     let cod: Int
 }
 
-// MARK: - Clouds
 struct Clouds : Codable {
     let all: Int
 }
 
-// MARK: - Main
 struct Main: Codable {
     var temp: Double?
-    var feelsLike: Double?
-    var tempMin: Double?
-    var tempMax: Double?
+    var feels_like: Double?
+    var temp_min: Double?
+    var temp_max: Double?
     var pressure: Int?
     var humidity: Int?
-    var seaLevel: Int?
-    var grndLevel: Int?
-
-    enum CodingKeys: String, CodingKey {
-        case temp = "temp"
-        case feelsLike = "feels_like"
-        case tempMin = "temp_min"
-        case tempMax = "temp_max"
-        case pressure = "pressure"
-        case humidity = "humidity"
-        case seaLevel = "sea_level"
-        case grndLevel = "grnd_level"
-    }
+    var sea_level: Int?
+    var grnd_level: Int?
 }
 
-// MARK: - Weather
 struct Weather : Codable {
     let id: Int
     let main: String
@@ -59,7 +44,6 @@ struct Weather : Codable {
     let icon: String
 }
 
-// MARK: - Wind
 struct Wind : Codable {
     let speed: Double
     let deg: Int

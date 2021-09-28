@@ -7,7 +7,6 @@
 
 import UIKit
 
-// MARK: - Cities
 struct Cities : Codable {
     let id: Int?
     let name: String?
@@ -16,7 +15,6 @@ struct Cities : Codable {
     let coord: Coord?
 }
 
-// MARK: - Coord
 struct Coord: Codable {
     let lon: Double?
     let lat: Double?
