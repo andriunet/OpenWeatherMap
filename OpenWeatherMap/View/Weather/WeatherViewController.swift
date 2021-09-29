@@ -31,6 +31,11 @@ class WeatherViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setupBindings()
+    }
+    
+    func setupBindings() {
+    
         viewModel.getWeather(lat: lat, lon: lon, callback: { weatherCity in
             DispatchQueue.main.async {
                 self.labelCity.text = weatherCity.name
@@ -60,8 +65,7 @@ class WeatherViewController: UIViewController {
                 self.tableView.reloadData()
             }
         }
-        
-        
+    
     }
     
     @IBAction func buttonClose(_ sender: Any) {

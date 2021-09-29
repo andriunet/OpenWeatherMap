@@ -23,6 +23,10 @@ class CitiesViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setupBindings()
+    }
+    
+    func setupBindings() {
         viewModel.getCities { Cities in
             self.citie = Cities
             self.tableView.reloadData()
