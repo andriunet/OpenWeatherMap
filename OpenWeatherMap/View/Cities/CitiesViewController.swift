@@ -6,11 +6,19 @@
 //
 
 import UIKit
+import CoreLocation
 
 class CitiesViewController: UITableViewController {
 
+    struct Coordinate {
+        var lat: Double
+        var lon: Double
+    }
+    
     let viewModel = CitiesViewModel()
     var citie: [Cities]?
+    
+    var locationManager: CLLocationManager?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,19 +35,21 @@ class CitiesViewController: UITableViewController {
         if segue.identifier == "weatherSegue" {
             if let weatherViewController = segue.destination as? WeatherViewController {
                 
-                if let row = sender as? Int {
-                    if let city = self.citie {
-                        if let coord = city[row].coord {
-                            weatherViewController.lat = coord.lat ?? 0
-                            weatherViewController.lon = coord.lon ?? 0
-                        }
-                    }
+                if let coord = sender as? Coordinate {
+                    weatherViewController.lat = coord.lat
+                    weatherViewController.lon = coord.lon
                 }
                 
             }
         }
     }
-
+    
+    @IBAction func buttonLocation(_ sender: Any) {
+        locationManager = CLLocationManager()
+        locationManager?.delegate = self
+        
+        locationManager?.requestWhenInUseAuthorization()
+    }
 }
 
 extension CitiesViewController {
@@ -51,7 +61,6 @@ extension CitiesViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "CityCell", for: indexPath)
-        
         if let city = citie {
             cell.textLabel?.text = city[indexPath.row].name
         }
@@ -60,7 +69,58 @@ extension CitiesViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        performSegue(withIdentifier: "weatherSegue", sender: indexPath.row)
+        
+        if let city = citie {
+            if let c = city[indexPath.row].coord {
+                let coord = Coordinate(lat: c.lat ?? 0, lon: c.lon ?? 0)
+                performSegue(withIdentifier: "weatherSegue", sender: coord)
+            }
+        }
+        
     }
 
+}
+
+extension CitiesViewController: CLLocationManagerDelegate {
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        switch status {
+        case .denied:
+          print("LocationManager denied")
+            
+          let alert = UIAlertController(title: "Location denied", message: "", preferredStyle: .alert)
+          alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+          self.present(alert, animated: true)
+            
+        case .notDetermined:
+          print("LocationManager notDetermined")
+        case .authorizedWhenInUse:
+          locationManager?.requestLocation()
+        case .authorizedAlways:
+          locationManager?.requestLocation()
+        case .restricted:
+          print("LocationManager restricted")
+        default:
+          print("LocationManager didChangeAuthorization")
+        }
+      }
+
+      func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        locations.forEach { (location) in
+            locationManager?.stopMonitoringSignificantLocationChanges()
+            
+            let coord = Coordinate(lat: location.coordinate.latitude, lon: location.coordinate.longitude)
+            performSegue(withIdentifier: "weatherSegue", sender: coord)
+        }
+        
+      }
+      
+      func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("LocationManager \(error.localizedDescription)")
+        if let error = error as? CLError, error.code == .denied {
+           locationManager?.stopMonitoringSignificantLocationChanges()
+           return
+        }
+      }
 }
