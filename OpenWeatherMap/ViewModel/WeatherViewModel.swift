@@ -36,7 +36,7 @@ class WeatherViewModel {
     
     func getForecast(lat: Double, lon: Double, callback: @escaping (_ forecast: Forecast) -> ()) {
                 
-        let url = "\(OpenWeatherMap.baseURL)/onecall?lat=\(lat)&lon=\(lon)&exclude=minutely&units=\(OpenWeatherMap.units)&appid=\(OpenWeatherMap.appid)"
+        let url = "\(OpenWeatherMap.baseURL)/onecall?lat=\(lat)&lon=\(lon)&exclude=minutely,current&units=\(OpenWeatherMap.units)&appid=\(OpenWeatherMap.appid)"
         
         guard let url = URL(string: url) else{
             return
