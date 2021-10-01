@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		66A7F4B22705DF3900325E87 /* ForecastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A7F4B12705DF3900325E87 /* ForecastViewController.swift */; };
+		66A7F4B42705DF4500325E87 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A7F4B32705DF4500325E87 /* MapViewController.swift */; };
 		66ECDC2C27022677002C0896 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66ECDC2B27022677002C0896 /* AppDelegate.swift */; };
 		66ECDC2E27022677002C0896 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66ECDC2D27022677002C0896 /* SceneDelegate.swift */; };
 		66ECDC3027022677002C0896 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66ECDC2F27022677002C0896 /* WeatherViewController.swift */; };
@@ -45,6 +47,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		66A7F4B12705DF3900325E87 /* ForecastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastViewController.swift; sourceTree = "<group>"; };
+		66A7F4B32705DF4500325E87 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		66ECDC2827022677002C0896 /* OpenWeatherMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenWeatherMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		66ECDC2B27022677002C0896 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		66ECDC2D27022677002C0896 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -194,6 +198,8 @@
 			children = (
 				66ECDC2F27022677002C0896 /* WeatherViewController.swift */,
 				66FA56BA2703990F003DC1E2 /* HourlyCollectionViewCell.swift */,
+				66A7F4B12705DF3900325E87 /* ForecastViewController.swift */,
+				66A7F4B32705DF4500325E87 /* MapViewController.swift */,
 			);
 			path = Weather;
 			sourceTree = "<group>";
@@ -348,7 +354,9 @@
 				66ECDC68270236F9002C0896 /* Cities.swift in Sources */,
 				66ECDC2C27022677002C0896 /* AppDelegate.swift in Sources */,
 				66FA56BD2703B5BD003DC1E2 /* Forecast.swift in Sources */,
+				66A7F4B22705DF3900325E87 /* ForecastViewController.swift in Sources */,
 				66ECDC2E27022677002C0896 /* SceneDelegate.swift in Sources */,
+				66A7F4B42705DF4500325E87 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -20,7 +20,7 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var labelVisibility: UILabel!
     
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var tableView: UITableView!
+    
     
     var lat: Double = 0
     var lon: Double = 0
@@ -60,9 +60,7 @@ class WeatherViewController: UIViewController {
                 self.collectionView.delegate = self
                 self.collectionView.reloadData()
                 
-                self.tableView.dataSource = self
-                self.tableView.delegate = self
-                self.tableView.reloadData()
+                self.performSegue(withIdentifier: "EmbedForecastSegue", sender: nil)
             }
         }
     
@@ -71,10 +69,60 @@ class WeatherViewController: UIViewController {
     @IBAction func buttonClose(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
+    
+    // MARK: - Prepare
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+
+        if self.forecast == nil {
+            return false
+        } else {
+            return true
+        }
+
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        
+        if segue.identifier == "EmbedForecastSegue" {
+            
+            if let viewControllerNavigation = segue.destination as? UITabBarController {
+                                        
+                if let forecastViewController = viewControllerNavigation.children[0] as? ForecastViewController {
+                    
+                    if let dailyWeather = forecast?.daily {
+                        forecastViewController.dailyWeather = dailyWeather
+                    }
+                }
+                
+                if let mapViewController = viewControllerNavigation.children[1] as? MapViewController {
+                    mapViewController.lon = self.lon
+                    mapViewController.lat = self.lat
+                }
+                
+            }
+            
+        }
+        
+    }
 
 }
 
 extension WeatherViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let size = CGSize(width: collectionView.bounds.height / 2, height: collectionView.bounds.height)
+        return size
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if let f = forecast { return f.hourly.count } else { return 0 }
@@ -100,35 +148,5 @@ extension WeatherViewController: UICollectionViewDataSource, UICollectionViewDel
 }
 
 
-extension WeatherViewController: UITableViewDataSource, UITableViewDelegate {
 
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let f = forecast { return f.daily.count } else { return 0 }
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
-        let cell = tableView.dequeueReusableCell(withIdentifier: "DailyTableViewCell", for: indexPath)
-
-        if let f = forecast {
-            
-            let daily = f.daily[indexPath.row]
-            
-            cell.textLabel?.text = Date(timeIntervalSince1970: Double(daily.dt)).getMouthDay()
-            cell.detailTextLabel?.text =  "\(Int(daily.temp.max))º / \(Int(daily.temp.min))º"
-            
-            if let weather = daily.weather.first {
-                cell.imageView?.image = UIImage(named: weather.icon)
-            }
-        }
-        
-        return cell
-    }
-
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
-
-
-}
 
