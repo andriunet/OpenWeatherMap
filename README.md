@@ -1,6 +1,6 @@
 # OpenWeatherMap
 
-Weather usando el API de OpenWeatherMap
+Weather usando el API de Open Weather Map
 
 <table>
 <tbody>
