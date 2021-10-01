@@ -6,8 +6,8 @@ Weather usando el API de OpenWeatherMap
 <tbody>
 <tr>
 <td><img src="https://github.com/andriunet/OpenWeatherMap/blob/main/Ciudades.png"  /></td>
-<td><img src="https://github.com/andriunet/OpenWeatherMap/blob/main/Weather1.png"/></td>
-<td><img src="https://github.com/andriunet/OpenWeatherMap/blob/main/Weather2.png"/></td>
+<td><img src="https://github.com/andriunet/OpenWeatherMap/blob/main/Weather_1.png"/></td>
+<td><img src="https://github.com/andriunet/OpenWeatherMap/blob/main/Weather_2.png"/></td>
 </tr>
 </tbody>
 </table>
